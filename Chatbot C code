@@ -1,29 +1,61 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+
+// Function to strip punctuation from the end of a string
+void strip_punctuation(char *str) {
+    int len = strlen(str);
+    while (len > 0 && ispunct((unsigned char)str[len - 1])) {
+        str[len - 1] = '\0';
+        len--;
+    }
+}
+
+// Function to convert string to lowercase
+void to_lowercase(char *str) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
 
 // Function to display the bot's response
 void respond(char *input) {
-    if (strstr(input, "hello") != NULL) {
-        printf("Bob: Hi there! How can I help you today?\n");
+    strip_punctuation(input);
+    to_lowercase(input);
+
+    if (strstr(input, "hello") != NULL || strstr(input, "hi") != NULL) {
+        printf("bob: Hi there! How can I help you today?\n");
     } else if (strstr(input, "how are you") != NULL) {
-        printf("Bob: I'm just a bunch of code, but I'm doing great! How about you?\n");
-    } else if (strstr(input, "what's your name") != NULL) {
-        printf("Bob: I'm Bob the bot!\n");
+        printf("bob: I'm just a bunch of code, but I'm doing great! How r u doing?\n");
+    } else if (strstr(input, "what's your name") != NULL || strstr(input, "who are you") != NULL) {
+        printf("bob: I'm your friendly bot.\n");
     } else if (strstr(input, "what do you do") != NULL) {
-        printf("Bob: I am a chatbot created by Ventengo (me).\n");
+        printf("bob: I chat with you and try to help with any questions you have.\n");
     } else if (strstr(input, "tell me a joke") != NULL) {
-        printf("Bob: Programming is 10% writing code and 90% of it is understanding why it’s not working.\n");
-    } else if (strstr(input, "goodbye") != NULL) {
-        printf("Bob: Goodbye! Have a great day!\n");
+        printf("bob: Why don't programmers like nature? It has too many bugs.\n");
+    } else if (strstr(input, "goodbye") != NULL || strstr(input, "bye") != NULL) {
+        printf("bob: Goodbye! Have a great day!\n");
+    } else if (strstr(input, "what is your favorite color") != NULL) {
+        printf("bob: I like all colors, but I think blue is pretty cool!\n");
+    } else if (strstr(input, "what is the meaning of life") != NULL) {
+        printf("bob:THIS IS TOO MUCH FOR ME!!! ERROR ERROR ERROR.\n");
+    } else if (strstr(input, "do you like music") != NULL) {
+        printf("Bob: I don't have ears, duh, Im a bob!\n");
+    } else if (strstr(input, "can you help me") != NULL) {
+        printf("bob: I'll do my best! What do you need help with?\n");
+    } else if (strstr(input, "who is your creator") != NULL) {
+        printf("bob: I was created by Ventengo!\n");
+    } else if (strstr(input, "do you like sports") != NULL) {
+        printf("bob: I play a few sports, but not many!\n");
     } else {
-        printf("Bob: I'm sorry, I don't understand that.\n");
+        printf("bob: I'm sorry, I don't understand that.\n");
     }
 }
 
 int main() {
     char input[256];
 
-    printf("Welcome to the chatbot! Type something to start a conversation (type 'exit' to quit).\n");
+    printf("Welcome to a sample bott! Type something to star t(exit to quit).\n");
 
     while (1) {
         printf("You: ");
@@ -34,7 +66,7 @@ int main() {
 
         // Check for exit condition
         if (strcmp(input, "exit") == 0) {
-            printf("Bot: See you later!\n");
+            printf("bob: See you later!\n");
             break;
         }
 
