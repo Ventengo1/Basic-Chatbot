@@ -18,44 +18,79 @@ void to_lowercase(char *str) {
     }
 }
 
-// Function to display the bot's response
+// Function to display Bob's response
 void respond(char *input) {
     strip_punctuation(input);
     to_lowercase(input);
 
+    // Greeting Commands
     if (strstr(input, "hello") != NULL || strstr(input, "hi") != NULL) {
-        printf("bob: Hi there! How can I help you today?\n");
+        printf("Bob: Hello! How can I help?\n");
     } else if (strstr(input, "how are you") != NULL) {
-        printf("bob: I'm just a bunch of code, but I'm doing great! How r u doing?\n");
-    } else if (strstr(input, "what's your name") != NULL || strstr(input, "who are you") != NULL) {
-        printf("bob: I'm your friendly bot.\n");
+        printf("Bob: I'm good, thanks! And you?\n");
+
+    // Basic Information Commands
+    } else if (strstr(input, "what is your name") != NULL || strstr(input, "who are you") != NULL) {
+        printf("Bob: I'm Bob, your friendly chatbot.\n");
     } else if (strstr(input, "what do you do") != NULL) {
-        printf("bob: I chat with you and try to help with any questions you have.\n");
-    } else if (strstr(input, "tell me a joke") != NULL) {
-        printf("bob: Why don't programmers like nature? It has too many bugs.\n");
-    } else if (strstr(input, "goodbye") != NULL || strstr(input, "bye") != NULL) {
-        printf("bob: Goodbye! Have a great day!\n");
+        printf("Bob: I answer questions and chat with you.\n");
+
+    // Time and Date Commands
+    } else if (strstr(input, "what time is it") != NULL || strstr(input, "what's the time") != NULL) {
+        printf("Bob: I can't tell the time. Check your device!\n");
+    } else if (strstr(input, "what's the date") != NULL || strstr(input, "what is today") != NULL) {
+        printf("Bob: I'm not sure about the date. Your device knows!\n");
+
+    // Informational Commands
+    } else if (strstr(input, "what is the weather") != NULL) {
+        printf("Bob: Check a weather app for the latest update.\n");
+    } else if (strstr(input, "how to program") != NULL || strstr(input, "how to code") != NULL) {
+        printf("Bob: Start with basics. Practice a lot.\n");
+    } else if (strstr(input, "what is c programming") != NULL) {
+        printf("Bob: C is a powerful programming language.\n");
+    } else if (strstr(input, "how to learn c programming") != NULL) {
+        printf("Bob: Practice coding and read tutorials.\n");
+    } else if (strstr(input, "how do computers work") != NULL) {
+        printf("Bob: Computers process data using code and hardware.\n");
+    } else if (strstr(input, "how do i install software") != NULL) {
+        printf("Bob: Download and run the installer.\n");
+    } else if (strstr(input, "what is a chatbot") != NULL) {
+        printf("Bob: I’m a chatbot, here to chat with you!\n");
+    } else if (strstr(input, "how to fix a computer problem") != NULL) {
+        printf("Bob: Try restarting. If it fails, seek help.\n");
+    } else if (strstr(input, "what is the internet") != NULL) {
+        printf("Bob: A global network connecting computers.\n");
+    } else if (strstr(input, "what is ai") != NULL || strstr(input, "what is artificial intelligence") != NULL) {
+        printf("Bob: AI is tech that mimics human intelligence.\n");
+    } else if (strstr(input, "what is machine learning") != NULL) {
+        printf("Bob: ML is AI that learns from data.\n");
+    } else if (strstr(input, "how do I stay safe online") != NULL) {
+        printf("Bob: Use strong passwords and be cautious.\n");
+
+    // Personal Preferences and Opinions
     } else if (strstr(input, "what is your favorite color") != NULL) {
-        printf("bob: I like all colors, but I think blue is pretty cool!\n");
-    } else if (strstr(input, "what is the meaning of life") != NULL) {
-        printf("bob:THIS IS TOO MUCH FOR ME!!! ERROR ERROR ERROR.\n");
-    } else if (strstr(input, "do you like music") != NULL) {
-        printf("Bob: I don't have ears, duh, Im a bob!\n");
-    } else if (strstr(input, "can you help me") != NULL) {
-        printf("bob: I'll do my best! What do you need help with?\n");
-    } else if (strstr(input, "who is your creator") != NULL) {
-        printf("bob: I was created by Ventengo!\n");
-    } else if (strstr(input, "do you like sports") != NULL) {
-        printf("bob: I play a few sports, but not many!\n");
+        printf("Bob: I don't have a favorite, but blue is nice.\n");
+    } else if (strstr(input, "do you like") != NULL) {
+        printf("Bob: I don't have preferences, but I’m here to help.\n");
+
+    // Assistance and Advice
+    } else if (strstr(input, "can you help me") != NULL || strstr(input, "help me") != NULL) {
+        printf("Bob: Sure! What do you need help with?\n");
+
+    // Goodbye Commands
+    } else if (strstr(input, "goodbye") != NULL || strstr(input, "bye") != NULL) {
+        printf("Bob: Goodbye! Come back anytime.\n");
+
+    // Unrecognized Input
     } else {
-        printf("bob: I'm sorry, I don't understand that.\n");
+        printf("Bob: I didn't understand that. Can you rephrase?\n");
     }
 }
 
 int main() {
     char input[256];
 
-    printf("Welcome to a sample bott! Type something to star t(exit to quit).\n");
+    printf("Welcome to Bob! Type something to start a conversation (type 'exit' to quit).\n");
 
     while (1) {
         printf("You: ");
@@ -66,7 +101,7 @@ int main() {
 
         // Check for exit condition
         if (strcmp(input, "exit") == 0) {
-            printf("bob: See you later!\n");
+            printf("Bob: See you later!\n");
             break;
         }
 
