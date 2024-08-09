@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to display the bot's response
+void respond(char *input) {
+    if (strstr(input, "hello") != NULL) {
+        printf("Bob: Hi there! How can I help you today?\n");
+    } else if (strstr(input, "how are you") != NULL) {
+        printf("Bob: I'm just a bunch of code, but I'm doing great! How about you?\n");
+    } else if (strstr(input, "what's your name") != NULL) {
+        printf("Bob: I'm Bob the bot!\n");
+    } else if (strstr(input, "what do you do") != NULL) {
+        printf("Bob: I am a chatbot created by Ventengo (me).\n");
+    } else if (strstr(input, "tell me a joke") != NULL) {
+        printf("Bob: Programming is 10% writing code and 90% of it is understanding why it’s not working.\n");
+    } else if (strstr(input, "goodbye") != NULL) {
+        printf("Bob: Goodbye! Have a great day!\n");
+    } else {
+        printf("Bob: I'm sorry, I don't understand that.\n");
+    }
+}
+
+int main() {
+    char input[256];
+
+    printf("Welcome to the chatbot! Type something to start a conversation (type 'exit' to quit).\n");
+
+    while (1) {
+        printf("You: ");
+        fgets(input, 256, stdin);
+
+        // Remove newline character from the input
+        input[strcspn(input, "\n")] = 0;
+
+        // Check for exit condition
+        if (strcmp(input, "exit") == 0) {
+            printf("Bot: See you later!\n");
+            break;
+        }
+
+        // Call the respond function
+        respond(input);
+    }
+
+    return 0;
+}
